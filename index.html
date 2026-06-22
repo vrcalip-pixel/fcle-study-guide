@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FCLE Study Packet — Florida Civic Literacy Exam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Spectral:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#13294b;
+    --navy-soft:#274472;
+    --brass:#9c7c2f;
+    --brass-light:#c9a84a;
+    --parchment:#faf7f0;
+    --parchment-card:#fffdf8;
+    --ink:#1f2733;
+    --ink-soft:#4a5460;
+    --rule:#e3dcc9;
+    --crimson:#8f3a2e;
+    --shadow:0 1px 2px rgba(19,41,75,.06),0 8px 24px rgba(19,41,75,.07);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:"Spectral",Georgia,serif;
+    font-size:17px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  .eyebrow{
+    font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    font-size:.72rem;
+    font-weight:600;
+    color:var(--brass);
+  }
+  h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;line-height:1.18;color:var(--navy);font-weight:600;}
+  a{color:var(--navy-soft);text-underline-offset:2px;}
+  a:hover{color:var(--crimson);}
+
+  /* ---------- Layout shell ---------- */
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px;}
+
+  /* ---------- Hero ---------- */
+  header.hero{
+    background:
+      radial-gradient(1200px 400px at 80% -10%, rgba(201,168,74,.18), transparent 60%),
+      linear-gradient(160deg,#13294b 0%, #1c3358 60%, #234070 100%);
+    color:#f4efe2;
+    padding:64px 0 52px;
+    border-bottom:3px solid var(--brass);
+  }
+  header.hero .wrap{position:relative;}
+  header.hero .eyebrow{color:var(--brass-light);}
+  header.hero h1{
+    color:#fff;
+    font-size:clamp(2.1rem,5.4vw,3.3rem);
+    margin:.35em 0 .25em;
+    letter-spacing:-.01em;
+  }
+  header.hero p.lede{
+    font-size:1.12rem;
+    color:#d8e0ef;
+    max-width:46ch;
+    margin:.2em 0 1.6em;
+  }
+  .hero-facts{
+    display:flex;flex-wrap:wrap;gap:10px 14px;
+    font-family:system-ui,sans-serif;font-size:.83rem;
+  }
+  .hero-facts span{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(201,168,74,.4);
+    padding:6px 12px;border-radius:100px;
+    color:#eee5cf;letter-spacing:.01em;
+  }
+  .hero-facts b{color:#fff;font-weight:600;}
+
+  /* ---------- Section rhythm ---------- */
+  section{padding:46px 0;border-bottom:1px solid var(--rule);}
+  section:last-of-type{border-bottom:none;}
+  h2.sec-title{font-size:clamp(1.5rem,3.2vw,2rem);margin:.15em 0 .15em;}
+  .sec-sub{color:var(--ink-soft);margin-top:0;max-width:62ch;}
+
+  /* ---------- Competency banner ---------- */
+  .comp-head{
+    display:flex;align-items:baseline;gap:16px;
+    border-top:2px solid var(--navy);
+    padding-top:18px;margin-bottom:6px;
+  }
+  .comp-num{
+    font-family:"Fraunces",serif;font-weight:700;
+    font-size:2.4rem;color:var(--brass);line-height:1;
+    flex:0 0 auto;
+  }
+  .comp-head h2{margin:0;font-size:clamp(1.35rem,3vw,1.8rem);}
+  .comp-weight{
+    font-family:system-ui,sans-serif;font-size:.74rem;font-weight:600;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);
+    margin-left:auto;flex:0 0 auto;white-space:nowrap;
+  }
+
+  /* ---------- Cards & callouts ---------- */
+  .card{
+    background:var(--parchment-card);
+    border:1px solid var(--rule);
+    border-radius:12px;
+    padding:22px 24px;
+    box-shadow:var(--shadow);
+    margin:18px 0;
+  }
+  .concept{margin:20px 0;}
+  .concept h4{
+    font-size:1.08rem;margin:0 0 .25em;
+    display:flex;align-items:center;gap:.5em;
+  }
+  .concept h4::before{
+    content:"";width:7px;height:7px;border-radius:50%;
+    background:var(--brass);flex:0 0 auto;
+  }
+  .concept p{margin:.2em 0 0;}
+  .analogy{
+    border-left:3px solid var(--brass-light);
+    background:rgba(201,168,74,.07);
+    padding:8px 14px;margin:.55em 0 0;border-radius:0 8px 8px 0;
+    font-size:.95rem;color:var(--ink-soft);
+  }
+  .analogy b{color:var(--brass);font-variant:small-caps;letter-spacing:.03em;}
+
+  /* ---------- Tables ---------- */
+  .table-scroll{overflow-x:auto;margin:18px 0;border-radius:12px;border:1px solid var(--rule);box-shadow:var(--shadow);}
+  table{border-collapse:collapse;width:100%;background:var(--parchment-card);font-size:.93rem;}
+  caption{caption-side:top;text-align:left;font-family:system-ui,sans-serif;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--brass);padding:0 0 8px 2px;font-weight:600;}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--rule);vertical-align:top;}
+  thead th{background:var(--navy);color:#f4efe2;font-family:system-ui,sans-serif;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;}
+  tbody tr:nth-child(even){background:rgba(19,41,75,.025);}
+  td.yr{font-variant-numeric:tabular-nums;color:var(--navy-soft);font-weight:600;white-space:nowrap;}
+  td b, th b{color:var(--navy);}
+
+  /* ---------- Glossary ---------- */
+  .gloss dt{font-weight:600;color:var(--navy);font-family:"Fraunces",serif;margin-top:14px;}
+  .gloss dd{margin:.1em 0 0;color:var(--ink-soft);}
+
+  /* ---------- Quiz ---------- */
+  .quiz{margin-top:26px;}
+  .quiz > .eyebrow{display:block;margin-bottom:6px;}
+  .q{
+    background:var(--parchment-card);
+    border:1px solid var(--rule);border-radius:12px;
+    padding:18px 20px;margin:14px 0;box-shadow:var(--shadow);
+  }
+  .q .stem{font-weight:500;margin:0 0 .6em;}
+  .q .stem .n{color:var(--brass);font-family:"Fraunces",serif;font-weight:700;margin-right:.4em;}
+  .q ol{margin:.2em 0 0;padding-left:1.4em;}
+  .q ol li{margin:.18em 0;}
+  .q .stim{
+    background:rgba(19,41,75,.04);border-left:3px solid var(--navy-soft);
+    padding:9px 14px;margin:0 0 .7em;border-radius:0 8px 8px 0;
+    font-size:.95rem;font-style:italic;color:var(--ink-soft);
+  }
+  .q .stim cite{display:block;font-style:normal;font-size:.78rem;color:var(--navy-soft);margin-top:.3em;font-family:system-ui,sans-serif;}
+  details.answer{margin-top:12px;border-top:1px dashed var(--rule);padding-top:10px;}
+  details.answer summary{
+    cursor:pointer;font-family:system-ui,sans-serif;font-size:.82rem;
+    font-weight:600;letter-spacing:.04em;color:var(--navy-soft);
+    list-style:none;display:inline-flex;align-items:center;gap:.4em;
+  }
+  details.answer summary::-webkit-details-marker{display:none;}
+  details.answer summary::before{content:"▸";color:var(--brass);transition:transform .15s;}
+  details.answer[open] summary::before{transform:rotate(90deg);}
+  details.answer .reveal{margin-top:8px;font-size:.95rem;}
+  details.answer .reveal .key{
+    display:inline-block;background:var(--navy);color:#fff;
+    font-family:system-ui,sans-serif;font-weight:600;font-size:.78rem;
+    padding:2px 9px;border-radius:6px;margin-bottom:6px;letter-spacing:.03em;
+  }
+
+  /* ---------- Resource links ---------- */
+  .reslist{list-style:none;padding:0;margin:18px 0 0;}
+  .reslist li{
+    background:var(--parchment-card);border:1px solid var(--rule);
+    border-radius:10px;padding:14px 18px;margin:10px 0;box-shadow:var(--shadow);
+  }
+  .reslist .rtitle{font-family:"Fraunces",serif;font-weight:600;color:var(--navy);font-size:1.02rem;}
+  .reslist .rdesc{color:var(--ink-soft);font-size:.93rem;margin:.15em 0 .35em;}
+  .reslist .rurl{font-family:system-ui,sans-serif;font-size:.8rem;word-break:break-all;color:var(--navy-soft);}
+  .tag{display:inline-block;font-family:system-ui,sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--brass);border:1px solid var(--brass-light);border-radius:100px;padding:1px 8px;margin-right:6px;}
+
+  /* ---------- Checklist ---------- */
+  .checklist{list-style:none;padding:0;margin:16px 0 0;}
+  .checklist li{position:relative;padding:8px 0 8px 34px;border-bottom:1px solid var(--rule);}
+  .checklist li::before{
+    content:"";position:absolute;left:0;top:11px;width:18px;height:18px;
+    border:2px solid var(--brass);border-radius:5px;background:var(--parchment-card);
+  }
+  .checklist li b{color:var(--navy);}
+
+  /* ---------- TOC ---------- */
+  nav.toc{background:var(--parchment-card);border:1px solid var(--rule);border-radius:12px;padding:18px 22px;margin:26px 0 0;box-shadow:var(--shadow);}
+  nav.toc .eyebrow{display:block;margin-bottom:8px;}
+  nav.toc ol{margin:0;padding-left:1.3em;columns:2;column-gap:32px;}
+  nav.toc li{margin:.25em 0;break-inside:avoid;}
+  nav.toc a{text-decoration:none;}
+  nav.toc a:hover{text-decoration:underline;}
+
+  /* ---------- Sticky study nav ---------- */
+  .topnav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,247,240,.92);
+    backdrop-filter:saturate(140%) blur(8px);
+    -webkit-backdrop-filter:saturate(140%) blur(8px);
+    border-bottom:1px solid var(--rule);
+    box-shadow:0 2px 10px rgba(19,41,75,.05);
+  }
+  .topnav-inner{display:flex;align-items:center;gap:4px;overflow-x:auto;padding:8px 22px;scrollbar-width:thin;}
+  .topnav a{
+    font-family:system-ui,sans-serif;font-size:.82rem;font-weight:600;
+    color:var(--ink-soft);text-decoration:none;white-space:nowrap;
+    padding:7px 12px;border-radius:8px;letter-spacing:.01em;transition:background .15s,color .15s;
+  }
+  .topnav a:hover{background:rgba(19,41,75,.06);color:var(--navy);}
+  .topnav a.active{background:var(--navy);color:#fff;}
+  .topnav .spacer{flex:1 1 auto;min-width:8px;}
+  .answer-toggle{
+    font-family:system-ui,sans-serif;font-size:.78rem;font-weight:600;
+    background:var(--brass);color:#1a1407;border:none;border-radius:8px;
+    padding:7px 13px;cursor:pointer;white-space:nowrap;letter-spacing:.01em;
+  }
+  .answer-toggle:hover{background:var(--brass-light);}
+
+  /* ---------- Overview hub ---------- */
+  .hub{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:22px 0 6px;}
+  .hub-card{
+    display:block;text-decoration:none;color:inherit;
+    background:var(--parchment-card);border:1px solid var(--rule);
+    border-left:5px solid var(--brass);border-radius:12px;
+    padding:18px 20px;box-shadow:var(--shadow);transition:transform .12s,box-shadow .12s,border-color .12s;
+  }
+  .hub-card:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(19,41,75,.12);border-left-color:var(--navy);}
+  .hub-card .hc-top{display:flex;align-items:baseline;gap:10px;}
+  .hub-card .hc-num{font-family:"Fraunces",serif;font-weight:700;font-size:1.9rem;color:var(--brass);line-height:1;}
+  .hub-card h3{margin:0;font-size:1.08rem;}
+  .hub-card .hc-weight{margin-left:auto;font-family:system-ui,sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);}
+  .hub-card p{margin:.5em 0 0;font-size:.92rem;color:var(--ink-soft);line-height:1.5;}
+  .hub-card .hc-go{display:inline-block;margin-top:.6em;font-family:system-ui,sans-serif;font-size:.78rem;font-weight:600;color:var(--navy-soft);}
+  .connect-note{
+    background:rgba(201,168,74,.08);border:1px solid var(--brass-light);border-radius:10px;
+    padding:12px 16px;margin:14px 0 0;font-size:.93rem;color:var(--ink-soft);
+  }
+  .connect-note b{color:var(--brass);}
+
+  /* ---------- Case table filter ---------- */
+  .casetools{margin:16px 0 0;}
+  .casetools input[type=search]{
+    width:100%;font-family:"Spectral",serif;font-size:1rem;
+    padding:11px 14px;border:1px solid var(--rule);border-radius:10px;
+    background:var(--parchment-card);color:var(--ink);box-shadow:var(--shadow);
+  }
+  .casetools input[type=search]:focus{outline:2px solid var(--brass);outline-offset:1px;}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin:11px 0 4px;}
+  .chip{
+    font-family:system-ui,sans-serif;font-size:.76rem;font-weight:600;letter-spacing:.02em;
+    background:var(--parchment-card);color:var(--ink-soft);
+    border:1px solid var(--rule);border-radius:100px;padding:5px 12px;cursor:pointer;transition:all .12s;
+  }
+  .chip:hover{border-color:var(--brass);color:var(--navy);}
+  .chip.on{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .case-count{font-family:system-ui,sans-serif;font-size:.78rem;color:var(--ink-soft);margin:8px 0 0;}
+  tr.hide{display:none;}
+
+  /* ---------- Note box ---------- */
+  .note{
+    background:rgba(143,58,46,.06);border:1px solid rgba(143,58,46,.25);
+    border-radius:10px;padding:14px 18px;margin:18px 0;font-size:.95rem;
+  }
+  .note b{color:var(--crimson);}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--navy);color:#cdd6e6;padding:34px 0;font-size:.9rem;}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:center;}
+  footer a{color:#e7d9b0;}
+  .print-btn{
+    font-family:system-ui,sans-serif;font-size:.84rem;font-weight:600;
+    background:var(--brass);color:#1a1407;border:none;border-radius:8px;
+    padding:9px 16px;cursor:pointer;letter-spacing:.02em;
+  }
+  .print-btn:hover{background:var(--brass-light);}
+
+  @media (max-width:560px){
+    nav.toc ol{columns:1;}
+    .comp-weight{display:none;}
+    body{font-size:16px;}
+    .hub{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Print ---------- */
+  @media print{
+    :root{--shadow:none;}
+    body{background:#fff;font-size:11.5pt;line-height:1.4;}
+    header.hero{background:none;color:var(--navy);border-bottom:2pt solid var(--navy);padding:0 0 14pt;}
+    header.hero h1,header.hero .eyebrow{color:var(--navy);}
+    header.hero p.lede{color:#333;}
+    .hero-facts span{background:none;border:1px solid #999;color:#222;}
+    .hero-facts b{color:#000;}
+    .print-btn,nav.toc{display:none;}
+    .topnav,.casetools,.chips,.case-count,.answer-toggle{display:none !important;}
+    .hub{display:block;}
+    .hub-card{break-inside:avoid;border-left:3pt solid var(--navy);margin-bottom:8pt;}
+    tr.hide{display:table-row !important;}
+    section{padding:14pt 0;page-break-inside:auto;}
+    .wrap{max-width:100%;padding:0;}
+    .card,.q,.reslist li,.table-scroll{box-shadow:none;break-inside:avoid;}
+    .comp-head{page-break-after:avoid;}
+    thead th{background:#13294b !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    details.answer{open:open;}
+    details.answer > *:not(summary){display:block !important;}
+    details.answer summary::before{content:"✓ ";}
+    footer{background:none;color:#333;border-top:2pt solid var(--navy);}
+    footer a{color:#13294b;}
+    a{color:var(--navy);}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Pensacola State College &middot; Civic Literacy Requirement</span>
+    <h1>Florida Civic Literacy Exam</h1>
+    <p class="lede">A complete, plain-language study packet built around the four competencies the FCLE actually tests.</p>
+    <div class="hero-facts">
+      <span><b>80</b> questions</span>
+      <span><b>60%</b> to pass (<b>48</b>/80)</span>
+      <span><b>No</b> time limit</span>
+      <span><b>Free</b> at PSC</span>
+      <span><b>By appointment</b> only</span>
+      <span>Retake every <b>7 days</b> &middot; unlimited</span>
+    </div>
+  </div>
+</header>
+
+<nav class="topnav" id="topnav" aria-label="Study sections">
+  <div class="wrap topnav-inner">
+    <a href="#overview">Overview</a>
+    <a href="#c1">1 · Principles</a>
+    <a href="#c2">2 · Constitution</a>
+    <a href="#c3">3 · Documents</a>
+    <a href="#c4">4 · Cases &amp; Law</a>
+    <a href="#plan">Study Plan</a>
+    <a href="#resources">Resources</a>
+    <span class="spacer"></span>
+    <button class="answer-toggle" id="answerToggle" type="button">Show all answers</button>
+  </div>
+</nav>
+
+<!-- OVERVIEW HUB -->
+<section id="overview" style="padding-top:38px;">
+  <div class="wrap">
+    <span class="eyebrow">Choose where to study</span>
+    <h2 class="sec-title">Four competencies, one corpus</h2>
+    <p class="sec-sub">The exam draws evenly from four areas — about 25% each. Pick one to focus on, or read straight through. They overlap on purpose, so studying one reinforces the others.</p>
+
+    <div class="hub">
+      <a class="hub-card" href="#c1">
+        <div class="hc-top"><span class="hc-num">1</span><h3>Principles of democracy</h3><span class="hc-weight">~25%</span></div>
+        <p>The big ideas: social contract, rule of law, federalism, popular sovereignty, republic vs. democracy, and elections.</p>
+        <span class="hc-go">Study this &rarr;</span>
+      </a>
+      <a class="hub-card" href="#c2">
+        <div class="hc-top"><span class="hc-num">2</span><h3>The U.S. Constitution</h3><span class="hc-weight">~25%</span></div>
+        <p>The seven Articles, the key amendments, selective incorporation, and the famous clauses the Court keeps citing.</p>
+        <span class="hc-go">Study this &rarr;</span>
+      </a>
+      <a class="hub-card" href="#c3">
+        <div class="hc-top"><span class="hc-num">3</span><h3>Founding documents</h3><span class="hc-weight">~25%</span></div>
+        <p>From the Magna Carta to the Bill of Rights — what each document did and how the ideas flow into one another.</p>
+        <span class="hc-go">Study this &rarr;</span>
+      </a>
+      <a class="hub-card" href="#c4">
+        <div class="hc-top"><span class="hc-num">4</span><h3>Cases, laws &amp; actions</h3><span class="hc-weight">~25%</span></div>
+        <p>The 26 landmark Supreme Court cases plus key legislation and executive actions. Searchable and filterable below.</p>
+        <span class="hc-go">Study this &rarr;</span>
+      </a>
+    </div>
+
+    <div class="connect-note">
+      <b>How they connect:</b> a single question often spans two areas — a landmark case (Competency 4) usually turns on a clause or amendment (Competency 2), which traces back to a founding document (Competency 3) and the principle behind it (Competency 1). When you study a case, ask which amendment and which principle it rests on.
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <span class="eyebrow">Start here</span>
+    <h2 class="sec-title">What the FCLE is — and how to pass it</h2>
+    <p class="sec-sub">The Florida Civic Literacy Exam is part of Florida's civic literacy graduation requirement (State Board Rule 6A&#8209;10.02413). At Pensacola State College the exam is free, computer&#8209;based, and taken by appointment through RegisterBlast. You need 48 of 80 questions right (60%). There's no time limit, you can retake it every 7 days, and there's no cap on attempts.</p>
+
+    <div class="card">
+      <div class="concept" style="margin-top:0">
+        <h4>The test is split four ways — evenly</h4>
+        <p>Every question fits one of four "competencies," and each one is about <b>25%</b> of the exam (roughly 20 questions each). They overlap a lot — a question about a Supreme Court case is also a question about the Constitution — so studying one helps the others. This packet gives each competency its own section: a plain-language review, key terms, a quick-reference table, and a short self-quiz.</p>
+      </div>
+      <div class="concept">
+        <h4>How to use this packet</h4>
+        <p>Read the review for one competency, skim the table, then do the quiz with the answers hidden. Tap <b>"Show answer &amp; explanation"</b> only after you commit to a choice — guessing first is what makes it stick. Then go take the official FLDOE sample items (linked at the bottom) to rehearse the real question style. Print this page anytime for a paper copy; the answers print with it.</p>
+      </div>
+    </div>
+
+    <div class="note">
+      <b>Two paths, not one.</b> For most recent students the requirement is a qualifying course <em>and</em> a passing assessment. POS&nbsp;2041 (American National Government) or AMH&nbsp;2020 (U.S. History since 1877) covers the course side. The FCLE covers the assessment side — but a CLEP American Government score of 50, AP U.S. Government score of 3, or AP U.S. History score of 4 also satisfies the assessment. Confirm with a PSC advisor which applies to the specific catalog year.
+    </div>
+  </div>
+</section>
+
+<!-- COMPETENCY 1 -->
+<section id="c1">
+  <div class="wrap">
+    <div class="comp-head">
+      <span class="comp-num">1</span>
+      <h2>Principles &amp; practices of American democracy</h2>
+      <span class="comp-weight">~25% of exam</span>
+    </div>
+    <p class="sec-sub">The big ideas behind <em>why</em> American government works the way it does — and why the Founders chose a republic instead of a pure democracy.</p>
+
+    <div class="concept">
+      <h4>Social contract &amp; consent of the governed</h4>
+      <p>People agree to give up a little freedom and form a government; in return, the government protects their rights. Its power comes from the consent of the people — and if it stops protecting them, the people can change it. This idea comes mostly from philosopher <b>John Locke</b>.</p>
+      <div class="analogy"><b>Think of it like</b> joining a group project: everyone agrees to some rules so the whole team is protected. If the rules stop serving the team, the team rewrites them.</div>
+    </div>
+
+    <div class="concept">
+      <h4>Separation of powers &amp; checks and balances</h4>
+      <p>Government power is split into three branches — legislative, executive, judicial — so no single branch gets too strong. Each branch can "check" the others (the President can veto a law; Congress can override the veto; courts can strike laws down). The idea traces to <b>Montesquieu</b>.</p>
+      <div class="analogy"><b>Think of it like</b> a safe that needs three different keys. No one person can open it alone.</div>
+    </div>
+
+    <div class="concept">
+      <h4>Rule of law</h4>
+      <p>Everyone must follow the law — including presidents, police, and the wealthy. Power is limited by rules, not by whoever is in charge. (Nixon's claim that "when the president does it, it's not illegal" is the textbook violation of this principle.)</p>
+    </div>
+
+    <div class="concept">
+      <h4>Popular sovereignty</h4>
+      <p>The government is created by and answers to the people. The Constitution opens with "<b>We the People</b>" for exactly this reason — authority flows up from citizens, not down from a ruler.</p>
+    </div>
+
+    <div class="concept">
+      <h4>Natural rights</h4>
+      <p>Rights you're born with that no government grants or can take away — Locke listed life, liberty, and property; Jefferson rephrased it as life, liberty, and the pursuit of happiness in the Declaration of Independence.</p>
+    </div>
+
+    <div class="concept">
+      <h4>Federalism</h4>
+      <p>Power is shared between the national government and the state governments. Some powers belong to the nation (printing money, declaring war), some to the states (running schools, issuing licenses), and some are shared (taxing, building roads).</p>
+      <div class="analogy"><b>Think of it like</b> a household: some decisions belong to the whole house, some belong to each roommate's own room.</div>
+    </div>
+
+    <div class="concept">
+      <h4>Republicanism vs. pure democracy</h4>
+      <p>The U.S. is a <b>constitutional republic</b>: citizens elect representatives to make decisions, rather than everyone voting directly on every issue. The Founders feared a pure ("direct") democracy could let a passionate majority trample the minority, so they built representation and a constitution as guardrails. Article IV even guarantees every state a "republican form of government."</p>
+    </div>
+
+    <div class="concept">
+      <h4>Majority rule, minority rights, &amp; equality under law</h4>
+      <p>The majority decides, but certain rights are protected no matter what the majority wants. "Equality under the law" means equal <em>treatment</em> and equal <em>protection</em> — a fair process — not a guarantee that everyone ends up with equal results.</p>
+    </div>
+
+    <div class="concept">
+      <h4>Due process &amp; individual liberty</h4>
+      <p>Due process means the government must follow fair legal procedures before taking your life, liberty, or property. Individual liberty covers personal freedoms — including political and religious liberty, which the Founders prized. Rights can still be limited when they harm others (free speech doesn't protect falsely yelling "fire" in a crowded theater).</p>
+    </div>
+
+    <div class="concept">
+      <h4>Constitutionalism</h4>
+      <p>The idea that government power must operate within the limits set by a written constitution. Leaders can only do what the constitution allows — it's the rulebook that even the rule-makers have to follow.</p>
+    </div>
+
+    <div class="concept">
+      <h4>Elections &amp; the practice of self-government</h4>
+      <p>Free, fair, and secure elections are how popular sovereignty actually works in practice — they're the tool citizens use to consent to (and replace) their government. Know the basics of how elections run at the <b>state</b> level (states administer elections, set many of the rules, and draw districts) and the <b>federal</b> level (electing the President through the Electoral College, plus members of Congress). The integrity of elections — accurate counting, equal access, secure ballots — is treated as essential to a functioning republic.</p>
+    </div>
+
+    <dl class="gloss card">
+      <dt>Popular sovereignty</dt><dd>Government's authority comes from the people.</dd>
+      <dt>Consent of the governed</dt><dd>A government is only legitimate if the people agree to it.</dd>
+      <dt>Republic</dt><dd>A system where people elect representatives to govern for them.</dd>
+      <dt>Federalism</dt><dd>Power divided between national and state governments.</dd>
+      <dt>Rule of law</dt><dd>No one is above the law, including leaders.</dd>
+      <dt>Natural rights</dt><dd>Rights everyone is born with — life, liberty, property/happiness.</dd>
+      <dt>Constitutionalism</dt><dd>Government power is limited by a written constitution.</dd>
+      <dt>Free &amp; fair elections</dt><dd>Secure, equal-access voting — how citizens consent to and change their government.</dd>
+    </dl>
+
+    <div class="quiz">
+      <span class="eyebrow">Quick self-check &middot; Competency 1</span>
+
+      <div class="q">
+        <p class="stem"><span class="n">1.</span> The phrase "We the People" in the Constitution's Preamble best illustrates which principle?</p>
+        <ol type="A"><li>Separation of powers</li><li>Popular sovereignty</li><li>Federalism</li><li>Judicial review</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: B</span><br>"We the People" signals that the government's authority flows up from citizens — that's popular sovereignty.</div></details>
+      </div>
+
+      <div class="q">
+        <p class="stem"><span class="n">2.</span> Which philosopher's idea of the social contract and consent of the governed most influenced the Declaration of Independence?</p>
+        <ol type="A"><li>Thomas Hobbes</li><li>Montesquieu</li><li>John Locke</li><li>Karl Marx</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: C</span><br>Locke's natural rights and consent-of-the-governed ideas run straight through the Declaration. (Montesquieu is the one tied to separation of powers.)</div></details>
+      </div>
+
+      <div class="q">
+        <p class="stem"><span class="n">3.</span> The main reason the Founders chose a republic over a pure democracy was to —</p>
+        <ol type="A"><li>make voting faster</li><li>protect minority rights from a runaway majority</li><li>give states more power than the nation</li><li>eliminate elections</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: B</span><br>They worried a direct majority could trample minorities, so representation plus a constitution acts as a guardrail.</div></details>
+      </div>
+
+      <div class="q">
+        <p class="stem"><span class="n">4.</span> A president claims a law does not apply to them because of their office. This most directly violates —</p>
+        <ol type="A"><li>federalism</li><li>the rule of law</li><li>due process</li><li>popular sovereignty</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: B</span><br>Rule of law means everyone — including the president — is bound by the law.</div></details>
+      </div>
+
+      <div class="q">
+        <p class="stem"><span class="n">5.</span> "Equality under the law" guarantees —</p>
+        <ol type="A"><li>everyone receives the same income</li><li>equal treatment and protection, not equal outcomes</li><li>that all laws are identical in every state</li><li>that the majority always wins</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: B</span><br>It promises a fair, equal process — not that everyone ends up in the same place.</div></details>
+      </div>
+
+      <div class="q">
+        <p class="stem"><span class="n">6.</span> Deciding that public schools are run by states while the national government coins money is an example of —</p>
+        <ol type="A"><li>checks and balances</li><li>judicial review</li><li>federalism</li><li>the social contract</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: C</span><br>Splitting powers between national and state governments is federalism.</div></details>
+      </div>
+
+      <div class="q">
+        <p class="stem"><span class="n">7.</span> Read the passage, then answer.</p>
+        <div class="stim">"We the People of the United States, in Order to form a more perfect Union&hellip; do ordain and establish this Constitution&hellip;"<cite>— Preamble to the U.S. Constitution</cite></div>
+        <p style="margin:0 0 .5em">Which principle does the opening phrase best reflect?</p>
+        <ol type="A"><li>Judicial review</li><li>Popular sovereignty</li><li>Separation of powers</li><li>Federal supremacy</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: B</span><br>"We the People" shows authority coming from the citizens themselves — popular sovereignty. (This is the <em>stimulus-passage</em> style you'll see often on the real exam.)</div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETENCY 2 -->
+<section id="c2">
+  <div class="wrap">
+    <div class="comp-head">
+      <span class="comp-num">2</span>
+      <h2>The U.S. Constitution &amp; how it applies</h2>
+      <span class="comp-weight">~25% of exam</span>
+    </div>
+    <p class="sec-sub">What's in each Article, the amendments that matter most, and the famous clauses the Supreme Court keeps coming back to.</p>
+
+    <div class="table-scroll">
+      <table>
+        <caption>The seven Articles — a quick map</caption>
+        <thead><tr><th>Article</th><th>What it sets up</th><th>Memory hook</th></tr></thead>
+        <tbody>
+          <tr><td><b>I</b></td><td>The <b>Legislative</b> branch — Congress makes the laws</td><td>1 = Congress comes first</td></tr>
+          <tr><td><b>II</b></td><td>The <b>Executive</b> branch — the President enforces the laws</td><td>2 = the President</td></tr>
+          <tr><td><b>III</b></td><td>The <b>Judicial</b> branch — courts interpret the laws</td><td>3 = the courts judge</td></tr>
+          <tr><td><b>IV</b></td><td>States' relations; Full Faith &amp; Credit; admitting new states; guarantees a republican form of government</td><td>4 = the states</td></tr>
+          <tr><td><b>V</b></td><td>How to <b>amend</b> (change) the Constitution</td><td>5 = reVise</td></tr>
+          <tr><td><b>VI</b></td><td>The <b>Supremacy Clause</b> — federal law outranks conflicting state law</td><td>6 = supreme</td></tr>
+          <tr><td><b>VII</b></td><td><b>Ratification</b> — how the Constitution was approved</td><td>7 = sign-off</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="concept">
+      <h4>Three kinds of power</h4>
+      <p><b>Expressed (enumerated)</b> powers are written out for the national government (declare war, coin money). <b>Implied</b> powers aren't listed but are "necessary and proper" to carry out the listed ones. <b>Reserved</b> powers belong to the states under the <b>10th Amendment</b> — anything not given to the nation or denied to the states.</p>
+    </div>
+
+    <div class="concept">
+      <h4>Amendments &amp; the Bill of Rights</h4>
+      <p>There are <b>27 amendments</b>. The first ten — the <b>Bill of Rights (1791)</b> — protect individual freedoms. You don't need all 27 memorized, but know the heavy hitters below.</p>
+    </div>
+
+    <div class="table-scroll">
+      <table>
+        <caption>Amendments worth knowing cold</caption>
+        <thead><tr><th>Amend.</th><th>Protects / does</th></tr></thead>
+        <tbody>
+          <tr><td class="yr">1st</td><td>Speech, religion, press, assembly, petition</td></tr>
+          <tr><td class="yr">2nd</td><td>Right to keep and bear arms</td></tr>
+          <tr><td class="yr">4th</td><td>No unreasonable searches/seizures — usually needs a warrant</td></tr>
+          <tr><td class="yr">5th</td><td>Due process, no self-incrimination, no double jeopardy</td></tr>
+          <tr><td class="yr">6th</td><td>Right to a lawyer, a speedy and public trial, an impartial jury</td></tr>
+          <tr><td class="yr">10th</td><td>Powers not given to the nation are reserved to the states/people</td></tr>
+          <tr><td class="yr">13th</td><td>Abolished slavery</td></tr>
+          <tr><td class="yr">14th</td><td>Citizenship, <b>due process</b>, and <b>equal protection</b> applied to the states</td></tr>
+          <tr><td class="yr">15th</td><td>Right to vote regardless of race</td></tr>
+          <tr><td class="yr">19th</td><td>Right to vote regardless of sex (women's suffrage)</td></tr>
+          <tr><td class="yr">26th</td><td>Lowered the voting age to 18</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="concept">
+      <h4>Selective incorporation</h4>
+      <p>Originally the Bill of Rights only limited the <em>national</em> government. Over time the Supreme Court used the <b>14th Amendment</b> to apply most of those protections to the <em>states</em> too, one right at a time. That process is called selective incorporation.</p>
+    </div>
+
+    <div class="concept">
+      <h4>Federalists vs. Anti-Federalists</h4>
+      <p><b>Federalists</b> (Hamilton, Madison, Jay) supported ratifying the Constitution and a strong national government — they made their case in the <b>Federalist Papers</b>. <b>Anti-Federalists</b> feared too much central power and demanded a <b>Bill of Rights</b> as the price of their support — which is why we got one. Their best-known essay is <b>Brutus No. 1</b>, which argued the country was too large for a single strong national government.</p>
+    </div>
+
+    <div class="table-scroll">
+      <table>
+        <caption>Famous clauses the Court keeps citing</caption>
+        <thead><tr><th>Clause</th><th>What it means</th></tr></thead>
+        <tbody>
+          <tr><td><b>Supremacy</b></td><td>Federal law wins when it conflicts with state law (Article VI)</td></tr>
+          <tr><td><b>Necessary &amp; Proper</b> (Elastic)</td><td>Lets Congress pass laws needed to carry out its powers — the source of implied powers</td></tr>
+          <tr><td><b>Commerce</b></td><td>Congress can regulate trade between states</td></tr>
+          <tr><td><b>Emoluments</b></td><td>Bars federal officials from accepting payments, gifts, or titles from foreign governments without consent of Congress</td></tr>
+          <tr><td><b>Full Faith &amp; Credit</b></td><td>States must honor each other's laws, records, and court rulings</td></tr>
+          <tr><td><b>Due Process</b></td><td>Government must use fair procedures (5th &amp; 14th Amendments)</td></tr>
+          <tr><td><b>Equal Protection</b></td><td>States can't deny anyone equal treatment under the law (14th Amendment)</td></tr>
+          <tr><td><b>Establishment &amp; Free Exercise</b></td><td>Government can't set up an official religion or block people from practicing theirs (1st Amendment)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="quiz">
+      <span class="eyebrow">Quick self-check &middot; Competency 2</span>
+
+      <div class="q">
+        <p class="stem"><span class="n">1.</span> Which article of the Constitution grants the powers to coin money, make treaties, and tax imports?</p>
+        <ol type="A"><li>Article I (Legislative)</li><li>Article II (Executive)</li><li>Article III (Judicial)</li><li>Article IV (States)</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: A</span><br>Those are powers of Congress, which Article I creates.</div></details>
+      </div>
+
+      <div class="q">
+        <p class="stem"><span class="n">2.</span> When a state law conflicts with a valid federal law, the conflict is resolved using the —</p>
+        <ol type="A"><li>Tenth Amendment</li><li>Commerce Clause</li><li>Supremacy Clause</li><li>Equal Protection Clause</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: C</span><br>The Supremacy Clause (Article VI) makes federal law the "supreme law of the land."</div></details>
+      </div>
+
+      <div class="q">
+        <p class="stem"><span class="n">3.</span> Powers not given to the national government and not denied to the states are —</p>
+        <ol type="A"><li>implied powers</li><li>reserved to the states by the 10th Amendment</li><li>expressed powers</li><li>banned entirely</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: B</span><br>The 10th Amendment reserves leftover powers to the states and the people.</div></details>
+      </div>
+
+      <div class="q">
+        <p class="stem"><span class="n">4.</span> Police search a hotel room without a warrant or valid exception. Which amendment protects against this?</p>
+        <ol type="A"><li>Second</li><li>Third</li><li>Fourth</li><li>Fifth</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: C</span><br>The 4th Amendment guards against unreasonable searches and seizures.</div></details>
+      </div>
+
+      <div class="q">
+        <p class="stem"><span class="n">5.</span> The Anti-Federalists' biggest demand before they would support the Constitution was —</p>
+        <ol type="A"><li>a national bank</li><li>a Bill of Rights</li><li>a stronger president</li><li>an end to elections</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: B</span><br>Their insistence on protecting individual rights is why the Bill of Rights exists.</div></details>
+      </div>
+
+      <div class="q">
+        <p class="stem"><span class="n">6.</span> The process of applying Bill of Rights protections to state governments through the 14th Amendment is called —</p>
+        <ol type="A"><li>judicial review</li><li>selective incorporation</li><li>ratification</li><li>nullification</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: B</span><br>Selective incorporation extends federal rights to the states, one at a time.</div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETENCY 3 -->
+<section id="c3">
+  <div class="wrap">
+    <div class="comp-head">
+      <span class="comp-num">3</span>
+      <h2>The founding documents</h2>
+      <span class="comp-weight">~25% of exam</span>
+    </div>
+    <p class="sec-sub">The texts that shaped American self-government — what each one did, and how earlier ideas fed into later ones.</p>
+
+    <div class="table-scroll">
+      <table>
+        <caption>Documents &amp; why they matter</caption>
+        <thead><tr><th>Document</th><th>Year</th><th>Why it matters</th></tr></thead>
+        <tbody>
+          <tr><td><b>Magna Carta</b></td><td class="yr">1215</td><td>Limited the king's power and planted the seeds of rule of law and due process</td></tr>
+          <tr><td><b>Mayflower Compact</b></td><td class="yr">1620</td><td>Early example of colonists agreeing to govern themselves by consent</td></tr>
+          <tr><td><b>English Bill of Rights</b></td><td class="yr">1689</td><td>Limited the monarchy and protected certain rights — a model for ours</td></tr>
+          <tr><td><b>Common Sense</b> (Paine)</td><td class="yr">1776</td><td>Persuaded ordinary colonists to support independence</td></tr>
+          <tr><td><b>Virginia Declaration of Rights</b></td><td class="yr">1776</td><td>Influenced both the Declaration of Independence and the Bill of Rights</td></tr>
+          <tr><td><b>Declaration of Independence</b></td><td class="yr">1776</td><td>Declared independence; stated natural rights and consent of the governed (Jefferson, drawing on Locke)</td></tr>
+          <tr><td><b>Massachusetts Constitution</b></td><td class="yr">1780</td><td>Oldest functioning written constitution in the world; its structure influenced the U.S. Constitution</td></tr>
+          <tr><td><b>Articles of Confederation</b></td><td class="yr">1781</td><td>First U.S. government — too weak (couldn't tax or regulate trade), so it was replaced</td></tr>
+          <tr><td><b>Northwest Ordinance</b></td><td class="yr">1787</td><td>Set rules for turning territories into states and banned slavery in that territory</td></tr>
+          <tr><td><b>Federalist Papers</b></td><td class="yr">1787&ndash;88</td><td>Essays by Hamilton, Madison &amp; Jay arguing for ratification</td></tr>
+          <tr><td><b>U.S. Constitution</b></td><td class="yr">1787</td><td>The framework of the federal government still in use today</td></tr>
+          <tr><td><b>Bill of Rights</b></td><td class="yr">1791</td><td>First ten amendments — protects individual freedoms</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="concept">
+      <h4>The Federalist Papers worth knowing by number</h4>
+      <p>The official blueprint names five specifically:</p>
+      <p style="margin:.4em 0 0"><b>No. 10</b> (Madison): a large republic is the best defense against "factions" — groups that put their own interest over the common good.<br>
+      <b>No. 14</b> (Madison): a large republic <em>can</em> work because it's representative, not a direct democracy where everyone must gather in one place.<br>
+      <b>No. 31</b> (Hamilton): the national government needs the power to tax in order to function.<br>
+      <b>No. 39</b> (Madison): explains that the new government is both <em>republican</em> (representative) and a blend of national and federal features.<br>
+      <b>No. 51</b> (Madison): checks and balances — "ambition must be made to counteract ambition" so power restrains power.</p>
+    </div>
+
+    <div class="concept">
+      <h4>The Articles &rarr; the Constitution story</h4>
+      <p>The Articles of Confederation made the central government so weak it couldn't tax, regulate trade, or keep order. When that failed, the framers wrote the Constitution to create a stronger — but still limited — national government. Knowing this "weak-then-fixed" arc explains a lot of exam questions.</p>
+    </div>
+
+    <div class="concept">
+      <h4>How the ideas flow</h4>
+      <p>Enlightenment thinkers (especially Locke) &rarr; the Declaration of Independence &rarr; the Constitution &rarr; the Bill of Rights. Earlier English documents (Magna Carta, English Bill of Rights) and colonial ones (Mayflower Compact, Virginia Declaration of Rights) fed into all of it. The Seneca Falls "Declaration of Sentiments" (1848) later borrowed the Declaration of Independence's structure to argue for women's rights.</p>
+    </div>
+
+    <div class="quiz">
+      <span class="eyebrow">Quick self-check &middot; Competency 3</span>
+
+      <div class="q">
+        <p class="stem"><span class="n">1.</span> Which document is the first U.S. national government — later replaced because it was too weak?</p>
+        <ol type="A"><li>The Constitution</li><li>The Articles of Confederation</li><li>The Bill of Rights</li><li>The Mayflower Compact</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: B</span><br>The Articles couldn't tax or regulate trade, so the Constitution replaced them.</div></details>
+      </div>
+
+      <div class="q">
+        <p class="stem"><span class="n">2.</span> The Mayflower Compact is best remembered as an early example of —</p>
+        <ol type="A"><li>a written constitution for the nation</li><li>colonists agreeing to govern themselves by consent</li><li>a declaration of war</li><li>a trade agreement</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: B</span><br>Settlers pledged to make and follow laws for the common good — self-government by consent.</div></details>
+      </div>
+
+      <div class="q">
+        <p class="stem"><span class="n">3.</span> Federalist No. 51 is most associated with which idea?</p>
+        <ol type="A"><li>Ending slavery</li><li>Checks and balances ("ambition counteracts ambition")</li><li>Free trade</li><li>Lowering the voting age</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: B</span><br>No. 51 lays out how the branches check one another. (No. 10 is the one about factions.)</div></details>
+      </div>
+
+      <div class="q">
+        <p class="stem"><span class="n">4.</span> The Declaration of Independence's ideas about natural rights came most directly from —</p>
+        <ol type="A"><li>Karl Marx</li><li>John Locke and Enlightenment thinking</li><li>the Magna Carta authors</li><li>the Federalist Papers</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: B</span><br>Jefferson drew on Locke's natural-rights philosophy.</div></details>
+      </div>
+
+      <div class="q">
+        <p class="stem"><span class="n">5.</span> Thomas Paine's <em>Common Sense</em> (1776) mainly —</p>
+        <ol type="A"><li>created the three branches of government</li><li>persuaded everyday colonists to support independence</li><li>ended the Revolutionary War</li><li>wrote the Bill of Rights</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: B</span><br>It was a plain-language pamphlet that turned public opinion toward independence.</div></details>
+      </div>
+
+      <div class="q">
+        <p class="stem"><span class="n">6.</span> The Magna Carta (1215) is significant because it —</p>
+        <ol type="A"><li>declared American independence</li><li>limited the power of the king and advanced the rule of law</li><li>created the U.S. Senate</li><li>freed enslaved people</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: B</span><br>It established that even the king must follow the law — an early due-process root.</div></details>
+      </div>
+
+      <div class="q">
+        <p class="stem"><span class="n">7.</span> Read the excerpt, then answer.</p>
+        <div class="stim">"We hold these truths to be self-evident, that all men are created equal, that they are endowed by their Creator with certain unalienable Rights&hellip;"<cite>— Declaration of Independence (1776)</cite></div>
+        <p style="margin:0 0 .5em">The ideas in this passage were most directly drawn from —</p>
+        <ol type="A"><li>Karl Marx's economic theory</li><li>John Locke's ideas on natural rights</li><li>the Articles of Confederation</li><li>the Monroe Doctrine</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: B</span><br>The natural-rights language ("unalienable Rights") comes straight from Locke and Enlightenment thought.</div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETENCY 4 -->
+<section id="c4">
+  <div class="wrap">
+    <div class="comp-head">
+      <span class="comp-num">4</span>
+      <h2>Landmark cases, legislation &amp; executive actions</h2>
+      <span class="comp-weight">~25% of exam</span>
+    </div>
+    <p class="sec-sub">This is the most memorization-heavy competency. Learn each case as a one-line "what it decided." The table below is the single highest-value thing to study in this packet.</p>
+
+    <div class="casetools">
+      <input type="search" id="caseSearch" placeholder="Search cases — try &ldquo;speech&rdquo;, &ldquo;Miranda&rdquo;, &ldquo;1954&rdquo;, or &ldquo;segregation&rdquo;&hellip;" aria-label="Search landmark cases">
+      <div class="chips" id="caseChips" role="group" aria-label="Filter cases by theme">
+        <button class="chip on" data-filter="all">All 26</button>
+        <button class="chip" data-filter="civil">Civil rights</button>
+        <button class="chip" data-filter="speech">Speech &amp; press</button>
+        <button class="chip" data-filter="religion">Religion</button>
+        <button class="chip" data-filter="criminal">Criminal procedure</button>
+        <button class="chip" data-filter="voting">Voting &amp; elections</button>
+        <button class="chip" data-filter="federal">Federal power</button>
+        <button class="chip" data-filter="guns">2nd Amendment</button>
+      </div>
+      <p class="case-count" id="caseCount"></p>
+    </div>
+
+    <div class="table-scroll">
+      <table id="caseTable">
+        <caption>Landmark Supreme Court cases — filter by theme or search</caption>
+        <thead><tr><th>Case</th><th>Year</th><th>What it decided</th><th>Theme</th></tr></thead>
+        <tbody>
+          <tr data-theme="federal"><td><b>Marbury v. Madison</b></td><td class="yr">1803</td><td>Established <b>judicial review</b> — courts can strike down laws that violate the Constitution</td><td>Federal power</td></tr>
+          <tr data-theme="federal"><td><b>McCulloch v. Maryland</b></td><td class="yr">1819</td><td>Upheld implied powers (national bank) and federal supremacy; states can't tax federal institutions</td><td>Federal power</td></tr>
+          <tr data-theme="civil"><td><b>Dred Scott v. Sandford</b></td><td class="yr">1857</td><td>Ruled enslaved people were not citizens; later undone by the 13th &amp; 14th Amendments</td><td>Civil rights</td></tr>
+          <tr data-theme="civil"><td><b>Plessy v. Ferguson</b></td><td class="yr">1896</td><td>Allowed "separate but equal" racial segregation</td><td>Civil rights</td></tr>
+          <tr data-theme="speech"><td><b>Schenck v. U.S.</b></td><td class="yr">1919</td><td>Speech can be limited when it poses a "clear and present danger"</td><td>Speech</td></tr>
+          <tr data-theme="civil"><td><b>Korematsu v. U.S.</b></td><td class="yr">1944</td><td>Upheld Japanese-American internment — national security over civil liberties</td><td>Civil rights</td></tr>
+          <tr data-theme="civil"><td><b>Brown v. Board of Education</b></td><td class="yr">1954</td><td>Overturned Plessy; segregated public schools are unconstitutional</td><td>Civil rights</td></tr>
+          <tr data-theme="criminal"><td><b>Mapp v. Ohio</b></td><td class="yr">1961</td><td>Illegally obtained evidence can't be used in court (exclusionary rule)</td><td>Criminal procedure</td></tr>
+          <tr data-theme="voting"><td><b>Baker v. Carr</b></td><td class="yr">1962</td><td>Opened the door to "one person, one vote" redistricting cases</td><td>Voting</td></tr>
+          <tr data-theme="religion"><td><b>Engel v. Vitale</b></td><td class="yr">1962</td><td>Official prayer in public schools violates the Establishment Clause</td><td>Religion</td></tr>
+          <tr data-theme="criminal"><td><b>Gideon v. Wainwright</b></td><td class="yr">1963</td><td>Right to a lawyer even if you can't afford one</td><td>Criminal procedure</td></tr>
+          <tr data-theme="criminal"><td><b>Miranda v. Arizona</b></td><td class="yr">1966</td><td>Police must inform suspects of their rights ("Miranda rights")</td><td>Criminal procedure</td></tr>
+          <tr data-theme="speech"><td><b>Tinker v. Des Moines</b></td><td class="yr">1969</td><td>Students keep free-speech rights at school (armband protest)</td><td>Speech</td></tr>
+          <tr data-theme="speech"><td><b>New York Times v. U.S.</b></td><td class="yr">1971</td><td>Limited "prior restraint" — strong protection for a free press (Pentagon Papers)</td><td>Speech &amp; press</td></tr>
+          <tr data-theme="religion"><td><b>Wisconsin v. Yoder</b></td><td class="yr">1972</td><td>Religious freedom can exempt families from some compulsory schooling laws</td><td>Religion</td></tr>
+          <tr data-theme="civil"><td><b>Roe v. Wade</b></td><td class="yr">1973</td><td>Recognized an abortion right under privacy &mdash; <em>later overturned by Dobbs in 2022</em></td><td>Civil rights</td></tr>
+          <tr data-theme="federal"><td><b>United States v. Nixon</b></td><td class="yr">1974</td><td>The president is not above the law; limited executive privilege (Watergate tapes)</td><td>Federal power</td></tr>
+          <tr data-theme="civil"><td><b>Regents of UC v. Bakke</b></td><td class="yr">1978</td><td>Strict racial quotas are unconstitutional, but race could be one factor in admissions</td><td>Civil rights</td></tr>
+          <tr data-theme="speech"><td><b>Hazelwood v. Kuhlmeier</b></td><td class="yr">1988</td><td>Schools may regulate the content of school-sponsored student newspapers</td><td>Speech</td></tr>
+          <tr data-theme="speech"><td><b>Texas v. Johnson</b></td><td class="yr">1989</td><td>Flag burning is protected symbolic speech</td><td>Speech</td></tr>
+          <tr data-theme="voting"><td><b>Shaw v. Reno</b></td><td class="yr">1993</td><td>Drawing districts mainly by race can violate equal protection (racial gerrymandering)</td><td>Voting</td></tr>
+          <tr data-theme="federal"><td><b>U.S. v. Lopez</b></td><td class="yr">1995</td><td>Limited the Commerce Clause — Congress had overreached (guns near schools)</td><td>Federal power</td></tr>
+          <tr data-theme="voting"><td><b>Bush v. Gore</b></td><td class="yr">2000</td><td>Ended the Florida recount and decided the 2000 presidential election</td><td>Voting</td></tr>
+          <tr data-theme="guns"><td><b>District of Columbia v. Heller</b></td><td class="yr">2008</td><td>The 2nd Amendment protects an individual right to own a firearm</td><td>2nd Amendment</td></tr>
+          <tr data-theme="guns"><td><b>McDonald v. Chicago</b></td><td class="yr">2010</td><td>Applied the 2nd Amendment to the states (incorporation)</td><td>2nd Amendment</td></tr>
+          <tr data-theme="speech"><td><b>Citizens United v. FEC</b></td><td class="yr">2010</td><td>Political spending by corporations and unions is protected speech</td><td>Speech</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <b>Study note on Roe v. Wade.</b> Florida's official FCLE materials list Roe among landmark cases, and the exam may still reference what it <em>decided</em> in 1973. Just know the update: the Supreme Court overturned Roe in <em>Dobbs v. Jackson Women's Health Organization</em> (2022), returning abortion regulation to the states.
+    </div>
+
+    <div class="concept">
+      <h4>Landmark legislation — the categories to recognize</h4>
+      <p>You don't need every law, just the <em>type</em>: compromises over slavery (Compromise of 1850, Kansas-Nebraska Act 1854), expansion and government structure (Homestead Act 1862, Pendleton Act 1883 civil-service reform), civil rights expansions or restrictions (Civil Rights Act of 1964; Alien &amp; Sedition Acts 1798; USA PATRIOT Act 2001), social programs (New Deal acts, Great Society acts, Affordable Care Act 2010), environmental protection (Clean Air Act 1970), and war powers (Gulf of Tonkin Resolution 1964).</p>
+    </div>
+
+    <div class="concept">
+      <h4>Landmark executive actions</h4>
+      <p>Recognize these forms: treaties ending wars or expanding territory (Louisiana Purchase 1803, Treaty of Paris 1898), suspensions of rights in crisis (Lincoln suspending habeas corpus; Japanese internment via Executive Order 9066), and executive orders that expanded rights (Truman desegregating the military, EO 9981). The Monroe Doctrine — opposing new European colonization in the Americas — is a classic foreign-policy example.</p>
+    </div>
+
+    <div class="quiz">
+      <span class="eyebrow">Quick self-check &middot; Competency 4</span>
+
+      <div class="q">
+        <p class="stem"><span class="n">1.</span> Which case established judicial review — the power of courts to strike down unconstitutional laws?</p>
+        <ol type="A"><li>Marbury v. Madison</li><li>Plessy v. Ferguson</li><li>Miranda v. Arizona</li><li>Bush v. Gore</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: A</span><br>Marbury v. Madison (1803) gave the Court the power of judicial review.</div></details>
+      </div>
+
+      <div class="q">
+        <p class="stem"><span class="n">2.</span> A defendant who cannot afford a lawyer is denied one at trial. Which case says that's unconstitutional?</p>
+        <ol type="A"><li>Mapp v. Ohio</li><li>Gideon v. Wainwright</li><li>McCulloch v. Maryland</li><li>Plessy v. Ferguson</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: B</span><br>Gideon v. Wainwright (1963) guarantees the right to counsel even if you can't pay.</div></details>
+      </div>
+
+      <div class="q">
+        <p class="stem"><span class="n">3.</span> Brown v. Board of Education (1954) is significant because it —</p>
+        <ol type="A"><li>upheld "separate but equal"</li><li>overturned segregation in public schools</li><li>legalized flag burning</li><li>established Miranda rights</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: B</span><br>Brown overturned Plessy and ended legal segregation in public schools.</div></details>
+      </div>
+
+      <div class="q">
+        <p class="stem"><span class="n">4.</span> Which case decided that a president must comply with the law and turn over evidence, limiting executive privilege?</p>
+        <ol type="A"><li>United States v. Nixon</li><li>Citizens United v. FEC</li><li>Korematsu v. U.S.</li><li>Baker v. Carr</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: A</span><br>U.S. v. Nixon (1974) made clear the president is not above the law.</div></details>
+      </div>
+
+      <div class="q">
+        <p class="stem"><span class="n">5.</span> The Louisiana Purchase (1803) is an example of a landmark —</p>
+        <ol type="A"><li>Supreme Court case</li><li>executive action (territorial expansion)</li><li>constitutional amendment</li><li>civil rights law</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: B</span><br>It was an executive action that roughly doubled the country's size.</div></details>
+      </div>
+
+      <div class="q">
+        <p class="stem"><span class="n">6.</span> Which case upheld the government's restriction of civil liberties in the name of national security during wartime?</p>
+        <ol type="A"><li>Tinker v. Des Moines</li><li>Korematsu v. United States</li><li>Engel v. Vitale</li><li>Gideon v. Wainwright</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: B</span><br>Korematsu (1944) upheld Japanese-American internment — security over liberty.</div></details>
+      </div>
+
+      <div class="q">
+        <p class="stem"><span class="n">7.</span> Read the excerpt from a Supreme Court opinion, then answer.</p>
+        <div class="stim">"It is emphatically the province and duty of the judicial department to say what the law is&hellip; a law repugnant to the constitution is void."<cite>— Chief Justice John Marshall</cite></div>
+        <p style="margin:0 0 .5em">Which case does this opinion come from, and what power did it establish?</p>
+        <ol type="A"><li>Brown v. Board — desegregation</li><li>Marbury v. Madison — judicial review</li><li>Miranda v. Arizona — rights on arrest</li><li>McCulloch v. Maryland — implied powers</li></ol>
+        <details class="answer"><summary>Show answer &amp; explanation</summary><div class="reveal"><span class="key">Answer: B</span><br>This is Marshall in <em>Marbury v. Madison</em> (1803), establishing judicial review — the Court's power to strike down unconstitutional laws.</div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDY PLAN -->
+<section id="plan">
+  <div class="wrap">
+    <span class="eyebrow">Game plan</span>
+    <h2 class="sec-title">A simple study plan &amp; test-day checklist</h2>
+
+    <div class="card">
+      <div class="concept" style="margin-top:0">
+        <h4>A one-week rhythm that works</h4>
+        <p>Spread it out — cramming hurts on a test this broad. Try one competency a day for four days, redo the quizzes the next day with answers hidden, then take the official FLDOE sample items twice before test day. Because the four competencies overlap, your second pass will feel much easier than your first.</p>
+      </div>
+      <div class="concept">
+        <h4>Highest-value moves</h4>
+        <p>Memorize the <b>landmark-cases table</b> (Competency 4) first — it's the most "fact recall" and the easiest points. Then lock in the <b>seven Articles</b> and the <b>key amendments</b>. The principles in Competency 1 are mostly common-sense reasoning once you know the vocabulary, so they're efficient to review last.</p>
+      </div>
+      <div class="concept">
+        <h4>Remember the exam's design</h4>
+        <p>No time limit means there's no reason to rush — read every scenario twice. And you can retake every 7 days with no cap on attempts, so a first attempt that doesn't pass is just a practice run that tells you exactly what to review.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:30px">Test-day checklist (PSC)</h3>
+    <ul class="checklist">
+      <li><b>Book the appointment.</b> The FCLE is by appointment only through RegisterBlast — it can't be taken as a walk-in.</li>
+      <li><b>Bring a valid photo ID.</b> Testing centers require government or school photo identification.</li>
+      <li><b>Know it's free.</b> There's no charge for the FCLE at Pensacola State College.</li>
+      <li><b>No time pressure.</b> The platform sets no time limit — pace yourself and re-read scenarios.</li>
+      <li><b>Aim for 48.</b> Passing is 60% — 48 of 80 correct.</li>
+      <li><b>Plan your retake if needed.</b> You can test again after 7 days, as many times as it takes.</li>
+      <li><b>Need accommodations?</b> The testing platform supports disability accommodations — arrange them with PSC Testing Services in advance.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section id="resources">
+  <div class="wrap">
+    <span class="eyebrow">Go to the source</span>
+    <h2 class="sec-title">Official resources &amp; links</h2>
+    <p class="sec-sub">These are the authoritative materials. Practice the real question style with the FLDOE sample items, and use the PSC library guide for competency-by-competency review.</p>
+
+    <ul class="reslist">
+      <li>
+        <span class="tag">Practice</span>
+        <div class="rtitle">FLDOE — FCLE Sample Items (official)</div>
+        <div class="rdesc">40 retired-style questions with an answer key, written by the state. The closest thing to a real practice test. Use this directly from the source.</div>
+        <div class="rurl">https://www.fldoe.org/core/fileparse.php/5663/urlt/FCLESampleItem.pdf</div>
+      </li>
+      <li>
+        <span class="tag">Scope</span>
+        <div class="rtitle">FLDOE — Supplemental Guide for the FCLE</div>
+        <div class="rdesc">The official breakdown of what each competency covers — the blueprint this packet's review is built around.</div>
+        <div class="rurl">https://www.fldoe.org/core/fileparse.php/5663/urlt/SuppGuideFCLE.pdf</div>
+      </li>
+      <li>
+        <span class="tag">Review</span>
+        <div class="rtitle">PSC Library — Civic Literacy Research Guide</div>
+        <div class="rdesc">Dedicated pages for each of the four competencies, plus an FCLE Review PowerPoint, review videos, and Kahoot study sets.</div>
+        <div class="rurl">https://researchguides.pensacolastate.edu/civicliteracy</div>
+      </li>
+      <li>
+        <span class="tag">Logistics</span>
+        <div class="rtitle">PSC Testing — FCLE Page (scheduling &amp; rules)</div>
+        <div class="rdesc">Official PSC details: fees, appointments, passing score, retake policy, and the RegisterBlast scheduling links.</div>
+        <div class="rurl">https://testing.pensacolastate.edu/tests/florida-civic-literacy-exam-fcle/</div>
+      </li>
+      <li>
+        <span class="tag">Alt path</span>
+        <div class="rtitle">Modern States — free CLEP American Government course</div>
+        <div class="rdesc">FLDOE-recommended free online course. Covers the same content and can satisfy the assessment via the CLEP exam if that route fits better.</div>
+        <div class="rurl">https://modernstates.org</div>
+      </li>
+      <li>
+        <span class="tag">Deep dive</span>
+        <div class="rtitle">Oyez — Supreme Court case summaries</div>
+        <div class="rdesc">Free, readable summaries (and audio) for every landmark case in Competency 4. Great for turning a one-liner into real understanding.</div>
+        <div class="rurl">https://www.oyez.org</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>Study packet for the Florida Civic Literacy Exam &middot; aligned to the four FCLE competencies (FLDOE Supplemental Guide).</div>
+    <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+  </div>
+</footer>
+
+<script>
+  // ---- Print: expand all answers ----
+  window.addEventListener('beforeprint', function(){
+    document.querySelectorAll('details.answer').forEach(function(d){ d.dataset.wasOpen = d.open ? '1':'0'; d.open = true; });
+  });
+  window.addEventListener('afterprint', function(){
+    document.querySelectorAll('details.answer').forEach(function(d){ if(d.dataset.wasOpen === '0') d.open = false; });
+  });
+
+  // ---- Show / hide all answers ----
+  (function(){
+    var btn = document.getElementById('answerToggle');
+    if(!btn) return;
+    var shown = false;
+    btn.addEventListener('click', function(){
+      shown = !shown;
+      document.querySelectorAll('details.answer').forEach(function(d){ d.open = shown; });
+      btn.textContent = shown ? 'Hide all answers' : 'Show all answers';
+    });
+  })();
+
+  // ---- Scroll-spy: highlight active section in the sticky nav ----
+  (function(){
+    var links = Array.prototype.slice.call(document.querySelectorAll('.topnav a'));
+    if(!links.length || !('IntersectionObserver' in window)) return;
+    var map = {};
+    links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+    var sections = links.map(function(a){ return document.getElementById(a.getAttribute('href').slice(1)); }).filter(Boolean);
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(a){ a.classList.remove('active'); });
+          if(map[e.target.id]) map[e.target.id].classList.add('active');
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+    sections.forEach(function(s){ obs.observe(s); });
+  })();
+
+  // ---- Landmark cases: search + theme filter ----
+  (function(){
+    var table = document.getElementById('caseTable');
+    if(!table) return;
+    var search = document.getElementById('caseSearch');
+    var chips = Array.prototype.slice.call(document.querySelectorAll('#caseChips .chip'));
+    var rows = Array.prototype.slice.call(table.querySelectorAll('tbody tr'));
+    var count = document.getElementById('caseCount');
+    var activeTheme = 'all';
+
+    function apply(){
+      var q = (search.value || '').trim().toLowerCase();
+      var visible = 0;
+      rows.forEach(function(r){
+        var themeOk = activeTheme === 'all' || r.getAttribute('data-theme') === activeTheme;
+        var textOk = !q || r.textContent.toLowerCase().indexOf(q) !== -1;
+        var show = themeOk && textOk;
+        r.classList.toggle('hide', !show);
+        if(show) visible++;
+      });
+      count.textContent = 'Showing ' + visible + ' of ' + rows.length + ' cases';
+    }
+    search.addEventListener('input', apply);
+    chips.forEach(function(c){
+      c.addEventListener('click', function(){
+        chips.forEach(function(x){ x.classList.remove('on'); });
+        c.classList.add('on');
+        activeTheme = c.getAttribute('data-filter');
+        apply();
+      });
+    });
+    apply();
+  })();
+</script>
+</body>
+</html>
