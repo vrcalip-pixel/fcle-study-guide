@@ -187,19 +187,51 @@
     background:var(--parchment-card);border:1px solid var(--rule);
     border-radius:10px;padding:14px 18px;margin:10px 0;box-shadow:var(--shadow);
   }
-  .reslist .rtitle{font-family:"Fraunces",serif;font-weight:600;color:var(--navy);font-size:1.02rem;}
+  .reslist .rtitle{font-family:"Fraunces",serif;font-weight:600;color:var(--navy);font-size:1.02rem;text-decoration:none;display:inline-block;}
+  a.rtitle:hover{color:var(--crimson);text-decoration:underline;text-underline-offset:2px;}
+  a.rtitle .ext{font-size:.78em;color:var(--brass);margin-left:.25em;}
   .reslist .rdesc{color:var(--ink-soft);font-size:.93rem;margin:.15em 0 .35em;}
   .reslist .rurl{font-family:system-ui,sans-serif;font-size:.8rem;word-break:break-all;color:var(--navy-soft);}
+  .reslist .rlink{
+    display:inline-block;margin-top:.5em;
+    font-family:system-ui,sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.01em;
+    background:var(--navy);color:#fff;text-decoration:none;
+    padding:7px 14px;border-radius:100px;transition:background .15s,transform .12s;
+  }
+  .reslist .rlink:hover{background:var(--navy-soft);transform:translateY(-1px);color:#fff;}
+  .reslist .rlink .arr{margin-left:.35em;}
   .tag{display:inline-block;font-family:system-ui,sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--brass);border:1px solid var(--brass-light);border-radius:100px;padding:1px 8px;margin-right:6px;}
 
   /* ---------- Checklist ---------- */
   .checklist{list-style:none;padding:0;margin:16px 0 0;}
-  .checklist li{position:relative;padding:8px 0 8px 34px;border-bottom:1px solid var(--rule);}
-  .checklist li::before{
-    content:"";position:absolute;left:0;top:11px;width:18px;height:18px;
+  .checklist li{padding:0;border-bottom:1px solid var(--rule);}
+  .checklist label{display:flex;align-items:flex-start;gap:13px;padding:10px 2px;cursor:pointer;}
+  .checklist input[type=checkbox]{
+    appearance:none;-webkit-appearance:none;
+    width:20px;height:20px;margin:2px 0 0;flex:0 0 auto;
     border:2px solid var(--brass);border-radius:5px;background:var(--parchment-card);
+    cursor:pointer;position:relative;transition:background .12s,border-color .12s;
   }
-  .checklist li b{color:var(--navy);}
+  .checklist input[type=checkbox]:checked{background:var(--navy);border-color:var(--navy);}
+  .checklist input[type=checkbox]:checked::after{
+    content:"\2713";color:#fff;position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;
+  }
+  .checklist input[type=checkbox]:focus-visible{outline:2px solid var(--brass);outline-offset:2px;}
+  .checklist .ltext{flex:1;}
+  .checklist label b{color:var(--navy);}
+  .checklist label:has(input:checked) .ltext{color:var(--ink-soft);text-decoration:line-through;text-decoration-color:var(--brass-light);}
+
+  /* progress bar */
+  .progress-wrap{margin:18px 0 6px;}
+  .progress-top{display:flex;justify-content:space-between;align-items:baseline;font-family:system-ui,sans-serif;font-size:.82rem;font-weight:600;color:var(--ink-soft);margin-bottom:7px;}
+  .progress-top #progLabel{color:var(--navy);}
+  .progress-track{height:11px;background:rgba(19,41,75,.1);border-radius:100px;overflow:hidden;}
+  .progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--brass-light),var(--navy));border-radius:100px;transition:width .35s ease;}
+  .progress-wrap.complete .progress-fill{background:linear-gradient(90deg,#2f8f5b,#1d6e44);}
+  .progress-wrap.complete #progLabel{color:#1d6e44;}
+  .reset-check{background:none;border:none;color:var(--navy-soft);font-family:system-ui,sans-serif;font-size:.76rem;font-weight:600;cursor:pointer;text-decoration:underline;padding:6px 0 0;}
+  .reset-check:hover{color:var(--crimson);}
 
   /* ---------- TOC ---------- */
   nav.toc{background:var(--parchment-card);border:1px solid var(--rule);border-radius:12px;padding:18px 22px;margin:26px 0 0;box-shadow:var(--shadow);}
@@ -310,6 +342,8 @@
     .hero-facts b{color:#000;}
     .print-btn,nav.toc{display:none;}
     .topnav,.casetools,.chips,.case-count,.answer-toggle{display:none !important;}
+    .reslist .rlink{display:none !important;}
+    .progress-wrap,.reset-check{display:none !important;}
     .hub{display:block;}
     .hub-card{break-inside:avoid;border-left:3pt solid var(--navy);margin-bottom:8pt;}
     tr.hide{display:table-row !important;}
@@ -920,15 +954,22 @@
     </div>
 
     <h3 style="margin-top:30px">Test-day checklist (PSC)</h3>
-    <ul class="checklist">
-      <li><b>Book the appointment.</b> The FCLE is by appointment only through RegisterBlast — it can't be taken as a walk-in.</li>
-      <li><b>Bring a valid photo ID.</b> Testing centers require government or school photo identification.</li>
-      <li><b>Know it's free.</b> There's no charge for the FCLE at Pensacola State College.</li>
-      <li><b>No time pressure.</b> The platform sets no time limit — pace yourself and re-read scenarios.</li>
-      <li><b>Aim for 48.</b> Passing is 60% — 48 of 80 correct.</li>
-      <li><b>Plan your retake if needed.</b> You can test again after 7 days, as many times as it takes.</li>
-      <li><b>Need accommodations?</b> The testing platform supports disability accommodations — arrange them with PSC Testing Services in advance.</li>
+
+    <div class="progress-wrap" id="progWrap">
+      <div class="progress-top"><span>Your readiness progress</span><span id="progLabel">0 of 7 done</span></div>
+      <div class="progress-track"><div class="progress-fill" id="progFill"></div></div>
+    </div>
+
+    <ul class="checklist" id="checklist">
+      <li><label><input type="checkbox" data-key="appt"><span class="ltext"><b>Book the appointment.</b> The FCLE is by appointment only through RegisterBlast — it can't be taken as a walk-in.</span></label></li>
+      <li><label><input type="checkbox" data-key="id"><span class="ltext"><b>Bring a valid photo ID.</b> Testing centers require government or school photo identification.</span></label></li>
+      <li><label><input type="checkbox" data-key="fee"><span class="ltext"><b>Know it's free.</b> There's no charge for the FCLE at Pensacola State College.</span></label></li>
+      <li><label><input type="checkbox" data-key="time"><span class="ltext"><b>No time pressure.</b> The platform sets no time limit — pace yourself and re-read scenarios.</span></label></li>
+      <li><label><input type="checkbox" data-key="score"><span class="ltext"><b>Aim for 48.</b> Passing is 60% — 48 of 80 correct.</span></label></li>
+      <li><label><input type="checkbox" data-key="retake"><span class="ltext"><b>Plan your retake if needed.</b> You can test again after 7 days, as many times as it takes.</span></label></li>
+      <li><label><input type="checkbox" data-key="accom"><span class="ltext"><b>Need accommodations?</b> The testing platform supports disability accommodations — arrange them with PSC Testing Services in advance.</span></label></li>
     </ul>
+    <button class="reset-check" id="resetCheck" type="button">Reset checklist</button>
   </div>
 </section>
 
@@ -942,39 +983,45 @@
     <ul class="reslist">
       <li>
         <span class="tag">Practice</span>
-        <div class="rtitle">FLDOE — FCLE Sample Items (official)</div>
+        <a class="rtitle" href="https://www.fldoe.org/core/fileparse.php/5663/urlt/FCLESampleItem.pdf" target="_blank" rel="noopener">FLDOE — FCLE Sample Items (official)<span class="ext">&#8599;</span></a>
         <div class="rdesc">40 retired-style questions with an answer key, written by the state. The closest thing to a real practice test. Use this directly from the source.</div>
         <div class="rurl">https://www.fldoe.org/core/fileparse.php/5663/urlt/FCLESampleItem.pdf</div>
+        <a class="rlink" href="https://www.fldoe.org/core/fileparse.php/5663/urlt/FCLESampleItem.pdf" target="_blank" rel="noopener">Open sample items <span class="arr">&rarr;</span></a>
       </li>
       <li>
         <span class="tag">Scope</span>
-        <div class="rtitle">FLDOE — Supplemental Guide for the FCLE</div>
+        <a class="rtitle" href="https://www.fldoe.org/core/fileparse.php/5663/urlt/SuppGuideFCLE.pdf" target="_blank" rel="noopener">FLDOE — Supplemental Guide for the FCLE<span class="ext">&#8599;</span></a>
         <div class="rdesc">The official breakdown of what each competency covers — the blueprint this packet's review is built around.</div>
         <div class="rurl">https://www.fldoe.org/core/fileparse.php/5663/urlt/SuppGuideFCLE.pdf</div>
+        <a class="rlink" href="https://www.fldoe.org/core/fileparse.php/5663/urlt/SuppGuideFCLE.pdf" target="_blank" rel="noopener">Open the guide <span class="arr">&rarr;</span></a>
       </li>
       <li>
         <span class="tag">Review</span>
-        <div class="rtitle">PSC Library — Civic Literacy Research Guide</div>
+        <a class="rtitle" href="https://researchguides.pensacolastate.edu/civicliteracy" target="_blank" rel="noopener">PSC Library — Civic Literacy Research Guide<span class="ext">&#8599;</span></a>
         <div class="rdesc">Dedicated pages for each of the four competencies, plus an FCLE Review PowerPoint, review videos, and Kahoot study sets.</div>
         <div class="rurl">https://researchguides.pensacolastate.edu/civicliteracy</div>
+        <a class="rlink" href="https://researchguides.pensacolastate.edu/civicliteracy" target="_blank" rel="noopener">Open the LibGuide <span class="arr">&rarr;</span></a>
       </li>
       <li>
         <span class="tag">Logistics</span>
-        <div class="rtitle">PSC Testing — FCLE Page (scheduling &amp; rules)</div>
+        <a class="rtitle" href="https://testing.pensacolastate.edu/tests/florida-civic-literacy-exam-fcle/" target="_blank" rel="noopener">PSC Testing — FCLE Page (scheduling &amp; rules)<span class="ext">&#8599;</span></a>
         <div class="rdesc">Official PSC details: fees, appointments, passing score, retake policy, and the RegisterBlast scheduling links.</div>
         <div class="rurl">https://testing.pensacolastate.edu/tests/florida-civic-literacy-exam-fcle/</div>
+        <a class="rlink" href="https://testing.pensacolastate.edu/tests/florida-civic-literacy-exam-fcle/" target="_blank" rel="noopener">Open testing page <span class="arr">&rarr;</span></a>
       </li>
       <li>
         <span class="tag">Alt path</span>
-        <div class="rtitle">Modern States — free CLEP American Government course</div>
+        <a class="rtitle" href="https://modernstates.org" target="_blank" rel="noopener">Modern States — free CLEP American Government course<span class="ext">&#8599;</span></a>
         <div class="rdesc">FLDOE-recommended free online course. Covers the same content and can satisfy the assessment via the CLEP exam if that route fits better.</div>
         <div class="rurl">https://modernstates.org</div>
+        <a class="rlink" href="https://modernstates.org" target="_blank" rel="noopener">Open Modern States <span class="arr">&rarr;</span></a>
       </li>
       <li>
         <span class="tag">Deep dive</span>
-        <div class="rtitle">Oyez — Supreme Court case summaries</div>
+        <a class="rtitle" href="https://www.oyez.org" target="_blank" rel="noopener">Oyez — Supreme Court case summaries<span class="ext">&#8599;</span></a>
         <div class="rdesc">Free, readable summaries (and audio) for every landmark case in Competency 4. Great for turning a one-liner into real understanding.</div>
         <div class="rurl">https://www.oyez.org</div>
+        <a class="rlink" href="https://www.oyez.org" target="_blank" rel="noopener">Open Oyez <span class="arr">&rarr;</span></a>
       </li>
     </ul>
   </div>
@@ -1058,6 +1105,43 @@
       });
     });
     apply();
+  })();
+
+  // ---- Test-day checklist: progress bar + saved state ----
+  (function(){
+    var list = document.getElementById('checklist');
+    if(!list) return;
+    var boxes = Array.prototype.slice.call(list.querySelectorAll('input[type=checkbox]'));
+    var fill = document.getElementById('progFill');
+    var label = document.getElementById('progLabel');
+    var wrap = document.getElementById('progWrap');
+    var reset = document.getElementById('resetCheck');
+    var KEY = 'fcle-checklist-v1';
+
+    function load(){
+      try{
+        var saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+        boxes.forEach(function(b){ if(saved[b.dataset.key]) b.checked = true; });
+      }catch(e){ /* storage unavailable — runs in-session only */ }
+    }
+    function save(){
+      try{
+        var state = {};
+        boxes.forEach(function(b){ if(b.checked) state[b.dataset.key] = 1; });
+        localStorage.setItem(KEY, JSON.stringify(state));
+      }catch(e){}
+    }
+    function render(){
+      var done = boxes.filter(function(b){ return b.checked; }).length;
+      var total = boxes.length;
+      fill.style.width = Math.round((done/total)*100) + '%';
+      label.textContent = (done === total) ? 'All set — ' + total + ' of ' + total + ' done' : done + ' of ' + total + ' done';
+      wrap.classList.toggle('complete', done === total);
+    }
+    boxes.forEach(function(b){ b.addEventListener('change', function(){ save(); render(); }); });
+    if(reset){ reset.addEventListener('click', function(){ boxes.forEach(function(b){ b.checked = false; }); save(); render(); }); }
+    load();
+    render();
   })();
 </script>
 </body>
